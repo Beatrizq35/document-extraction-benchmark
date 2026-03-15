@@ -1,0 +1,11 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+pymupdf-venv/
+
+# Documentos Temporários
+~$*.docx
+.DS_Store
