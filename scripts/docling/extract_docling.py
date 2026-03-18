@@ -1,0 +1,62 @@
+import time # Tempo de execucao
+start = time.time()  # Marca o início da velocidade de processamento
+
+# Implementacao do Código do Site do Docling
+
+from docling.datamodel.base_models import InputFormat # Importa uma lista de formatos que a biblioteca aceita
+from docling.datamodel.pipeline_options import ( # Importa as ferramentas de configuração
+    TesseractOcrOptions, # Controla como o PDF é processado
+    PdfPipelineOptions, # Permite configurar o motor de leitura de imagens (OCR)
+)
+from docling.document_converter import DocumentConverter, PdfFormatOption # DocumentConverter: faz a conversão PdfFormatOption: liga as configurações de PDF ao conversor
+
+pipeline_options = PdfPipelineOptions() # Cria um objeto de configuração vazio para PDFs
+pipeline_options.do_ocr = False # Força a biblioteca a tentar ler o texto mesmo que ele seja uma imagem
+# Obs: Mudado para False, pois nao estou precisando ler imagens no momento
+
+pipeline_options.ocr_options = TesseractOcrOptions()  # Usa o Tesseract, lê as imagens
+
+doc_converter = DocumentConverter( # Cria o conversor
+    format_options={InputFormat.PDF: PdfFormatOption(pipeline_options=pipeline_options)}
+)
+
+# Converte o arquivo 
+result = doc_converter.convert("data/sample.pdf") # teste com docs simples
+# result = doc_converter.convert("data/research-papers.pdf") # teste com artigo cientifico
+# result = doc_converter.convert("data/table.pdf") # teste docs com tabela
+# result = doc_converter.convert("data/symbols.pdf") # teste com simbolos
+
+# Opcoes de output
+# 1. MARKDOWN (O que você já estava usando)
+#print("--- SAÍDA MARKDOWN ---")
+#print(result.document.export_to_markdown())
+
+# 2. JSON (Estrutura da IA e metadados)
+# print("--- SAÍDA JSON ---")
+# print(result.document.export_to_dict()) 
+
+# 3. HTML (Visual para web)
+# print("--- SAÍDA HTML ---")
+# print(result.document.export_to_html())
+
+# 4. TEXTO PURO (Sem nenhuma formatação, apenas as palavras)
+print("--- SAÍDA TEXTO PURO ---")
+print(result.document.export_to_text())
+
+# 5. DOCTAGS (Formato especial do Docling para treinamento de modelos)
+# print("--- SAÍDA DOCTAGS ---")
+# print(result.document.export_to_document_tokens())
+
+end = time.time()    # Marca o fim da velocidade de processamento 
+print(f"Velocidade de processamento: {end - start:.2f} segundos")
+
+
+# Teste usando Docling de forma mais simples
+''''
+from docling.document_converter import DocumentConverter  
+
+source = ".data/research-papers.pdf" 
+converter = DocumentConverter() 
+doc = converter.convert(source).document 
+print(doc.export_to_markdown())
+'''
