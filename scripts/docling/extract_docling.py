@@ -1,7 +1,11 @@
 import time # Tempo de execucao
+
+from pathlib import Path # Adicionado para gerenciar as pastas
+from datetime import datetime # Adicionado para colocar data no nome do arquivo
+
 start = time.time()  # Marca o início da velocidade de processamento
 
-# Implementacao do Código do Site do Docling
+# --------- Implementacao do Código do Site do Docling ---------
 
 from docling.datamodel.base_models import InputFormat # Importa uma lista de formatos que a biblioteca aceita
 from docling.datamodel.pipeline_options import ( # Importa as ferramentas de configuração
@@ -20,13 +24,13 @@ doc_converter = DocumentConverter( # Cria o conversor
     format_options={InputFormat.PDF: PdfFormatOption(pipeline_options=pipeline_options)}
 )
 
-# Converte o arquivo 
-result = doc_converter.convert("data/sample.pdf") # teste com docs simples
+# --------- Converte o arquivo ---------
+# result = doc_converter.convert("data/sample.pdf") # teste com docs simples
 # result = doc_converter.convert("data/research-papers.pdf") # teste com artigo cientifico
-# result = doc_converter.convert("data/table.pdf") # teste docs com tabela
+result = doc_converter.convert("data/table.pdf") # teste docs com tabela
 # result = doc_converter.convert("data/symbols.pdf") # teste com simbolos
 
-# Opcoes de output
+# --------- Opcoes de output ---------
 # 1. MARKDOWN (O que você já estava usando)
 #print("--- SAÍDA MARKDOWN ---")
 #print(result.document.export_to_markdown())
@@ -47,8 +51,36 @@ print(result.document.export_to_text())
 # print("--- SAÍDA DOCTAGS ---")
 # print(result.document.export_to_document_tokens())
 
-end = time.time()    # Marca o fim da velocidade de processamento 
+# --------- Marca o fim da velocidade de processamento ---------
+end = time.time()     
 print(f"Velocidade de processamento: {end - start:.2f} segundos")
+
+# --------- Salvamento do Output ---------
+
+# 1. Define onde salvar (Cria uma pasta 'outputs' dentro de 'scripts/docling/')
+output_dir = Path(__file__).parent / "outputs"
+output_dir.mkdir(parents=True, exist_ok=True)
+
+# 2. Cria um nome único com data e hora para não sobrescrever o anterior
+timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+output_file = output_dir / f"teste_{timestamp}.txt"
+
+# 3. Salva o conteúdo em Markdown (ou troque para .txt se preferir)
+
+duration = end - start
+with open(output_file, "w", encoding="utf-8") as f:
+    f.write(result.document.export_to_markdown())
+    # Adicionamos o tempo de execução no final do arquivo salvo para seu controle
+    f.write(f"\n\n--- Tempo de processamento: {duration:.2f}s ---")
+
+print(f"\n✅ Teste salvo com sucesso em: {output_file}")
+
+
+
+
+
+
+
 
 
 # Teste usando Docling de forma mais simples

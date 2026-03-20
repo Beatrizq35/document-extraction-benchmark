@@ -9,3 +9,6 @@ pymupdf-venv/
 # Documentos Temporários
 ~$*.docx
 .DS_Store
+
+# Meus testes com Docling
+scripts/docling/outputs/
