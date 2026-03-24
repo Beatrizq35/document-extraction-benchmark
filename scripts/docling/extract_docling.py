@@ -25,10 +25,10 @@ doc_converter = DocumentConverter( # Cria o conversor
 )
 
 # --------- Converte o arquivo ---------
-# result = doc_converter.convert("data/sample.pdf") # teste com docs simples
-# result = doc_converter.convert("data/research-papers.pdf") # teste com artigo cientifico
-result = doc_converter.convert("data/table.pdf") # teste docs com tabela
-# result = doc_converter.convert("data/symbols.pdf") # teste com simbolos
+# result = doc_converter.convert("dataset/sample.pdf") # teste com docs simples
+# result = doc_converter.convert("dataset/research-papers.pdf") # teste com artigo cientifico
+result = doc_converter.convert("dataset/table.pdf") # teste docs com tabela
+# result = doc_converter.convert("dataset/symbols.pdf") # teste com simbolos
 
 # --------- Opcoes de output ---------
 # 1. MARKDOWN (O que você já estava usando)
@@ -87,7 +87,7 @@ print(f"\n✅ Teste salvo com sucesso em: {output_file}")
 ''''
 from docling.document_converter import DocumentConverter  
 
-source = ".data/research-papers.pdf" 
+source = "dataset/research-papers.pdf"
 converter = DocumentConverter() 
 doc = converter.convert(source).document 
 print(doc.export_to_markdown())

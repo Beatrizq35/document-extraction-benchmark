@@ -1,6 +1,9 @@
+from pathlib import Path
+
 import pymupdf
 
-doc = pymupdf.open("./sample.pdf") # open a document
+_repo_root = Path(__file__).resolve().parents[2]
+doc = pymupdf.open(_repo_root / "dataset" / "sample.pdf")
 
 out = open("output.txt", "wb") # create a text output
 for page in doc: # iterate the document pages

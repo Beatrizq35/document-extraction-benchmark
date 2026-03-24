@@ -1,5 +1,0 @@
-docling
-pymupdf
-pdfplumber
-pdfminer.six
-pypdf

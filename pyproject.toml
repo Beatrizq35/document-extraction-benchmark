@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "document-extraction-benchmark"
+version = "0.1.0"
+description = "Benchmark and compare Python PDF extraction libraries"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "docling",
+    "pymupdf",
+    "pdfplumber",
+    "pdfminer.six",
+    "pypdf",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0", "ruff>=0.4"]
+
+[project.scripts]
+document-extraction-benchmark = "document_extraction_benchmark.main:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]

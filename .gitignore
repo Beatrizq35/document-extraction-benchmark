@@ -1,15 +1,26 @@
 # Python
 __pycache__/
+.pytest_cache/
 *.py[cod]
 *$py.class
 venv/
 .venv/
 pymupdf-venv/
+doc-parser-libs/
 
-# Documentos Temporários
+# Packaging / editable installs (gerados por pip install -e .)
+*.egg-info/
+build/
+dist/
+*.egg
+
+# Ferramentas
+.ruff_cache/
+.mypy_cache/
+
+# Documentos temporários / SO
 ~$*.docx
 .DS_Store
-doc-parser-libs
 
-# Meus testes com Docling
+# Saídas locais dos scripts
 scripts/docling/outputs/
