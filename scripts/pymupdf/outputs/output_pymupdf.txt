@@ -1,0 +1,1540 @@
+Received 25 April 2023, accepted 9 May 2023, date of publication 15 May 2023, date of current version 23 May 2023.
+Digital Object Identifier 10.1109/ACCESS.2023.3276439
+Personalized Adaptive Learning Technologies
+Based on Machine Learning Techniques to
+Identify Learning Styles: A Systematic
+Literature Review
+SAADIA GUTTA ESSA
+1,2, TURGAY CELIK
+3,4, AND NADIA EMELIA HUMAN-HENDRICKS5
+1School of Electrical and Information Engineering, University of the Witwatersrand, Johannesburg 2000, South Africa
+2Department of Computer Science, Tshwane University of Technology, Polokwane 0700, South Africa
+3School of Electrical and Information Engineering, University of Witwatersrand, Johannesburg 2000, South Africa
+4Faculty of Engineering and Science, University of Agder, 4630 Kristiansand, Norway
+5Directorate of Curriculum Development and Support, Tshwane University of Technology, Pretoria 0183, South Africa
+Corresponding author: Saadia Gutta Essa (essasgutta@gmail.com)
+ABSTRACT Artificial intelligence (AI) approaches have been used in personalised adaptive education
+systems to overcome the limitations of statically determined learning styles (LSs). These approaches utilise
+algorithms from machine learning (ML) to tackle the challenge of personalising e-learning by mapping
+students’ behavioural attributes to a particular LS automatically and dynamically to optimise the individual
+learning process. Motivated by the many influential studies in this field and the current developments in ML
+and AI, a comprehensive systematic literature review was conducted from 2015 to 2022. Influential scientific
+literature was analysed to identify the emerging trends and gaps in the literature in terms of LS models and
+possible ML techniques employed for personalised adaptive learning platforms. The outcomes of this paper
+include a review and analysis of the current trends of this emerging field in terms of the applications and
+developments in using ML approaches to implement more intelligent and adaptive e-learning environments
+to detect learners’ LSs automatically for enhancing learning. In addition, the following issues were also
+investigated: the platforms that stimulated research; identifying LS models utilised in e-learning; the
+evaluation methods used; and the learning supports provided. The results indicated an increasing interest in
+using artificial neural network approaches to identify LSs. However, limited work has been conducted on the
+comparison of deep learning methods in this context. The findings suggest the need to consider and stimulate
+further empirical investigation in documenting the adoption and comparison of deep learning algorithms in
+classifying LSs to provide higher adaptability.
+INDEX TERMS Artificial intelligence, e-learning, learning style, machine learning, personalized adaptive
+learning, systematic literature review.
+I. INTRODUCTION
+The advent of novel technologies has unlocked new learn-
+ing opportunities creating a paradigm shift in the educa-
+tion sector [1]. Technological advances compounded by the
+COVID-19 pandemic have fuelled a rise in the online edu-
+cation paradigm. E-learning has enabled global access to
+information for learners. This has resulted in generating more
+data flows contributing to the rise in big data technology
+[2]. Consequently, e-learning needs to provide for the grow-
+The associate editor coordinating the review of this manuscript and
+approving it for publication was John Mitchell
+.
+ing number of users and prolific data [2], [3]. Furthermore,
+e-learning has led to not only a physical distance between
+the teacher and learner but also less personal engagement.
+This amplifies the need to develop a more personalised
+approach to e-learning for growing student populations
+to meet the requirements of the heterogeneous needs of
+individual learners [2], [3].
+[4]
+defines
+personalised
+adaptive
+learning
+as
+a
+‘‘technology-empowered effective pedagogy which can
+adaptively adjust teaching strategies timely based on
+real-time monitored (enabled by smart technology) learn-
+ers’ differences and changes in individual characteristics,
+48392
+This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 License.
+For more information, see https://creativecommons.org/licenses/by-nc-nd/4.0/
+VOLUME 11, 2023
+S. G. Essa et al.: Personalized Adaptive Learning Technologies Based on ML Techniques to Identify LSs
+individual performance, and personal development’’. Adap-
+tive education systems aim to enhance learning efficiency
+and performance and reduce cognitive overload issues by
+providing an optimal learning path and individualised content
+based on the knowledge, behaviour and profile of each learner
+[5], [6], [7]. Thus, personalised adaptive educational systems
+are built based on the fact that the learning process is different
+for each learner [8], [9]. However, current systems offer
+the same resources for all learners regardless of individual
+learner needs and preferences, therefore, these systems lack
+adaptivity [5].
+The formation of an effective student profile and model
+that represents a learner’s characteristics such as learning
+styles (LSs) is important to consider in the implementation
+of an efficient adaptive e-learning system [10]. Differences
+inLSs are determined by the different approaches that stu-
+dents use to engage with learning materials and internalise
+information [10]. Therefore, to ‘personalise’ e-learning, it is
+important to understand the types of learners and evaluate
+and classify their LSs to adapt the content and learning
+techniques according to their preferred way of learning to
+support learners more effectively and efficiently [6], [11].
+To determine LSs, well-known and used learning style theory
+models (LSMs) have been suggested to identify the initial LSs
+of learners [2].
+The efficiency of personalised adaptive education sys-
+tems depends on the approach used to categorise and col-
+lect information regarding the LSs of learners according
+to learner needs and characteristics and how this informa-
+tion is processed to develop an adaptive and intelligent
+learning context [5]. Therefore, by classifying learners’ LSs
+with greater accuracy, adaptive learning systems can utilise
+LS information to provide accurate personalisation. Tradi-
+tional methods to determine students’ LSs involve filling in
+a questionnaire, however, this solution has notable draw-
+backs [10]. First, filling in questionnaires is time-consuming
+[10]. Second, results obtained from the questionnaires can
+be inaccurate in determining the real LSs of the students
+as students are not always conscientious of their LS which
+results in them providing uninformed answers [10]. Third,
+LSs continually change during the learning process and are
+dynamic whereas results obtained from questionnaires are
+static [10].
+To overcome these limitations, artificial intelligence (AI)
+approaches have been used in personalised adaptive educa-
+tion systems to detect LSs automatically [5], [6], [10]. The
+automatic detection of LSs to classify students according
+to the way they prefer to learn is beneficial as it is not
+only more efficient than filling in questionnaires, but it is
+also dynamic and can be changed according to the students’
+behaviours [10]. These approaches utilise algorithms from
+the field of machine learning (ML) to tackle the challenge
+of personalising e-learning by mapping students’ behaviour
+attributes to a particular LS automatically and dynamically
+to optimise the individual learning process and enhance the
+e-learning experience [9], [10].
+After the identification of accurate LSs, adaptive learning
+systems utilise the information to provide accurate personal-
+isation leading to benefits for students, including increased
+student performance, satisfaction, learner engagement and
+time efficiency [2], [6], [8], [12], [13]. By students being
+aware of their LSs, they can self-regulate their learning,
+capitalise on their strengths and understand why they are
+struggling [14]. Moreover, instructors can use LS information
+to offer accurate guidance to their learners to improve their
+learning efficiency and support their personalised develop-
+ment [12], [15]. These appealing reasons inspired a grow-
+ing interest in research investigating the integration of LS
+and personalised adaptive learning(PAL) systems to enhance
+e-learning. The graph in Fig. 1 displays the statistical analysis
+of article publication trends by year across the four databases
+in this field during the period from 2015 to 2022. Moreover,
+some of these articles have been recognised and highly cited
+in research communities.
+FIGURE 1. Statistical analysis of article publication trends
+from 2015 to 2022.
+Previous studies and recent publications have shown the
+application of AI approaches in the automatic detection of
+LSs based on various LS models [5], [16], [17], [18]. For
+example, [5] developed an AI-based system that provided the
+facility to compare the performance of multiple LS models
+and AI-based classification techniques. These models were
+developed dynamically, within the same tool [5]. This study
+is an influential work, receiving a high number citations in
+Google Scholar. Another highly-cited work [16] investigated
+four computational intelligence algorithms for their ability
+to improve the accuracy of automatic LS identification. [17]
+used LS to develop a personalised conversational Intelligent
+Tutoring System (ITS). More recently, [18] proposed a robust
+classifier to identify the LS of the learners in an e-learning
+system which performed well for several courses tested [18].
+This study also attracted attention in research communities
+with a good number of citations within the last two years.
+Motivated by the many influential studies in this field and the
+VOLUME 11, 2023
+48393
+S. G. Essa et al.: Personalized Adaptive Learning Technologies Based on ML Techniques to Identify LSs
+current development of technologies in the field of AI, it is
+essential to understand the extant literature across this field
+of study.
+Furthermore, AI technologies associated with PAL can be
+integrated into e-learning to offer efficient and effective ways
+to address the challenge of personalising e-learning – partic-
+ularly relevant during the COVID-19 pandemic – to optimise
+individual learning. [19] emphasises the significance of such
+systems, particularly during a pandemic, due to the ability of
+these systems to assist educators in rethinking and revising
+the learning design of their courses to provide enhanced learn-
+ing experiences. Consequently, the relevance of PAL based on
+ML techniques is evident and supports the principal reason for
+advancing research in this field through this SLR.
+Although the surveys of recent review studies have
+addressed research on the global view of PAL [20], [21], [22],
+[23] from perspectives of the use of AI techniques [9] and
+theory of learning styles employed in adaptive e-learning
+[13], [24] environments, these SLRs have not considered
+and delved deeply into the application and integration of LS
+theories and AI techniques in adaptive e-learning systems to
+identify LSs automatically.
+SLRs conducted by [25] and [26] have considered the
+application and integration of LS theories and AI techniques
+in adaptive e-learning systems. These authors reviewed var-
+ious aspects of LS theory selection in the e-learning envi-
+ronment, online LS predictors/attributes and automatic LS
+classification algorithms for numerous LS applications in
+adaptive learning systems. This paper was based on these two
+previous reviews in the field of LS detection.
+The current SLR presented here overlaps with the classifi-
+cation of some topics in the SLRs presented by [25] and [26].
+These SLRs have two limitations. First, with the recent rapid
+advances in technology and innovations, studies that have
+been published after 2014 have yet to be reviewed. Second,
+these studies have not considered the different evaluation
+methods to evaluate and validate the accuracy of the AI
+techniques implemented in their analyses.
+The SLR presented here differs as it covers the period
+from 2015 to 2022. Furthermore, this SLR aims to augment
+existing research by reviewing articles that emphasise the LS
+applications in the development of the PAL system as well as
+the papers that provide insights into the ML techniques used
+to classify learners’ LSs automatically. Lastly, this SLR has
+also considered the different evaluation methods to evaluate
+and validate the accuracy of the AI techniques implemented
+in their analyses.
+In this paper, the survey summarises, quantifies and
+expands on the current research in the field of AI approaches
+used for personalised adaptive education systems within
+e-learning to classify the type of learners dynamically and
+automatically to optimise the individual learning process.
+Furthermore, it probes deeply into the application and
+integration of LS theories and AI techniques in adaptive
+e-learning systems to automatically identify an LS. A com-
+prehensive search of the scientific literature following a sys-
+tematic methodology related to this topic will be selected
+for the review and will be analysed to identify the emerging
+trends in terms of the LS models and possible AI techniques
+used for PAL platforms.
+The theoretical implications of the findings obtained from
+this study will certainly help and be of great interest to aca-
+demicians, practitioners and researchers in providing insight
+into the potential of how ML techniques can be exploited for
+implementing and supporting PAL to identify LSs. Further-
+more, the practical implications of this research will enhance
+the understanding of the status and trends of AI techniques
+and LSMs that are adopted to support PAL e-learning sys-
+tems. Moreover, performing the SLR through the extraction
+of relevant studies provides a background for appropriately
+positioning and identifying relevant lines of new research
+events [27].
+II. SEARCH METHODOLOGY
+The SLR survey was conducted following the methodolog-
+ical guidelines for literature reviews in software engineer-
+ing as recommended by Kitchenham and Charters [27].
+This methodology has already been used in other systematic
+reviews for similar fields of applicability in the SLR articles
+by [28] and [29]. Following these guidelines, in this section,
+the designed review protocol, which includes the research
+questions, the search process, the selection criteria and the
+selection process, is described.
+The main objective of the current SLR entails systemat-
+ically collecting and analysing studies on ML approaches
+used for personalised adaptive education systems within
+e-learning to implement intelligent and adaptive e-learning
+environments based on classifying learners’ LSs automati-
+cally and dynamically to enhance learning. To realise this
+goal, the literature review was guided by the following
+research questions:
+- What platforms are frequently investigated in PAL envi-
+ronments to determine learners’ LSs?
+- Which LSMs are frequently investigated in PAL envi-
+ronments to classify learners’ LSs?
+- Which ML techniques are frequently employed for
+adaptive education systems to automatically identify
+learners’ LSs?
+- What evaluation methods are used to determine the
+performance and accuracy of the ML techniques imple-
+mented to predict a new learner’s LS?
+- What learning supports are provided in the current liter-
+ature to provide personalised learning according to the
+learners’ LSs?
+The search strategy defined was used to search for primary
+studies and included search terms and generating search
+strings to be searched. The reviewers identified keywords,
+paying particular attention to words to answer the research
+questions. The main keywords that were used to identify the
+articles were ‘personalized learning’ OR ‘personalised learn-
+ing’ and ‘adaptive learning’, ‘e-Learning’ OR ELearning’
+48394
+VOLUME 11, 2023
+S. G. Essa et al.: Personalized Adaptive Learning Technologies Based on ML Techniques to Identify LSs
+OR ‘online learning’, ‘machine learning’, ‘artificial intelli-
+gence’ and ‘learning styles’.
+An SLR was implemented covering papers published in
+journals and at conferences and available in the four iden-
+tified electronic databases, namely, IEEE, Springer, Science
+Direct (Elsevier) and ACM. To make this research contem-
+porary and well-intentioned in AI technologies employed
+in adaptive education systems, the literature search covered
+contributions from 2015 to 2022. Relevant studies that were
+not found following this search appear in the referenced
+bibliography of the searched results and were also included
+in the second and third analysis iterations.
+Screening of the literature for the selection process
+reported the most appropriate papers for the mapping study
+through the inclusion and exclusion criteria provided by the
+protocol. Specifically, articles from the preliminary search
+were included if they met the following main inclusion
+criteria:
+- Current application and integration of LS theory/theories
+in the development of PAL systems.
+- Techniques based on automatic and dynamic approaches
+using ML approaches applied in the area of education to
+obtain LS information and patterns. Therefore, the focus
+is on data-driven approaches.
+- Articles
+applicable
+to
+technology-supported
+adap-
+tive/personalised learning such as adaptive/personalised
+interfaces, learning contents and learning paths for
+administering teaching and learning activities.
+- Empirical studies that have investigated the usage, eval-
+uated and or implemented a PAL system based on
+ML techniques to identify LS for use in educational
+institutions.
+The following main exclusion criteria were applied in this
+SLR:
+- Articles that emphasise the application of LSs and only
+use traditional measurement methods such as question-
+naires and rule-based approaches such as the study by
+[30]. However, the study by [31] was included as it
+combined a literature-based method with ML techniques
+to detect learners’ LSs.
+- Research that deals with learner modelling in the context
+of adaptive learning using an ontology approach and
+recommender systems.
+- Studies relevant to personalised adaptive learning but
+with NO references to education, such as health care.
+Once the potentially relevant primary studies were obtained,
+they were assessed for their actual relevance. Articles were
+selected based on the research questions, keywords, search
+strings, databases and screening of inclusion and exclusion
+criteria identified above. The study selection process involved
+a multistage process, involving five stages: the search of the
+digital databases; pre-screening by assessing title and key
+words; examination of the complete text of the abstract for
+relevance; examination of the introduction and conclusion;
+and the full-text screening of the primary studies to determine
+compliance with the inclusion and exclusion criteria. The
+final number of articles included from the selected databases
+in this SLR was narrowed down to 48 during the period of
+investigation.
+III. ANALYSIS, RESULTS AND DISCUSSION
+In this literature survey, the selected articles focus on AI
+approaches used for personalised adaptive education systems
+within e-learning to classify the type of learners dynamically
+and automatically (by identifying LSs). These articles were
+analysed, synthesised and categorised using similar themes
+to answer the research questions. They provide insight into
+current practices, identify the emerging trends in terms of
+the LSMs and potential AI techniques to be employed for
+PAL platforms and suggest areas for further investigation.
+In this section, the results and discussion of the research
+articles surveyed and the studies addressing the five research
+sub-questions are presented. Based on the research questions,
+the taxonomy outlined in Fig. 2 was used in the current
+research. The taxonomy will be elaborated on in this section.
+Classification and recommendation are the two foremost
+tasks needed in e-learning personalisation [2]. Thus, the arti-
+cles reviewed herein present both the tasks of the develop-
+ment process and how they are interrelated. All the studies
+selected in the review adhered to a similar integration and
+development process so the results of the analysis will be
+presented accordingly.
+The classification task entails classifying and predicting
+a learner’s LS using LSM and ML algorithms [25], [30].
+The development begins by selecting the LS framework and
+then selecting and collecting data using the data sources and
+the corresponding LS attributes to build the learner model
+[25], [30]. This is followed by the selection, training, testing
+and evaluation of the classification models to detect and
+recognise a new learner’s LS [25], [30]. Thereafter, in the
+recommendation task, the application of this model into an
+adaptive learning system according to learner preferences is
+implemented [26], [31]. An illustration of the process/method
+used to personalise e-learning through the automatic and
+dynamic detection of LSs is depicted in Fig 3.
+A. WHAT PLATFORMS ARE FREQUENTLY INVESTIGATED
+IN PERSONALISED ADAPTIVE LEARNING ENVIRONMENTS
+TO DETERMINE LEARNERS’ LEARNING STYLES?
+This question investigated the different platforms that stimu-
+lated research on applicable learning scenarios found across
+the literature to automatically detect LSs. These platforms for
+each of the selected studies in this SLR are detailed in Table 1
+and are depicted in Fig. 4.
+Among the 48 papers that have addressed this topic,
+e-learning is still the platform that has received the most
+interest at 73%. Massive Open Online Course (MOOC) plat-
+forms to address attrition and the high dropout rate have
+also been implemented. Only 7% of the papers have invested
+MOOC platforms in personalised adaptive learning platforms
+to identify LSs. Notable examples include papers by [6], [8],
+VOLUME 11, 2023
+48395
+S. G. Essa et al.: Personalized Adaptive Learning Technologies Based on ML Techniques to Identify LSs
+FIGURE 2. Taxonomy – PAL based on ML techniques to automatically identify LSs.
+and [32], which investigated solutions to integrate adaptive
+recommendation systems with MOOC.
+PAL platforms based on LS have also been applied to
+various platforms such as the ITS [33], [34]; the Conver-
+sational Intelligent Tutoring System (CITS) [17] and online
+mobile applications [35], [36]. In [35], the proposed approach
+enabled elementary students to learn materials in an online
+mobile application and adjust the delivery method according
+to their preferred LS. Other platforms found through the
+review contain a virtual laboratory; [37] proposed a complete
+personalised learning solution for LS identification, learning
+performance assessment and adaptive learning content deliv-
+ery for virtual hands-on laboratory-based education solu-
+tions. On the other hand, [38] investigated LSs to determine
+their relevance in problem-solving abilities in a game-based
+environment.
+Platforms categorised as ‘other’, such as the research
+frameworks proposed by [5], [39], and [40], are representa-
+tive of the studies that presented a proposed approach and
+framework (or were evaluated using simulated data) where
+no particular platform was specified in their work.
+B. WHICH LEARNING STYLE MODELS ARE FREQUENTLY
+INVESTIGATED IN PERSONALISED ADAPTIVE LEARNING
+ENVIRONMENTS TO CLASSIFY LEARNERS’
+LEARNING STYLES?
+This question addressed the first step of the integration pro-
+cess. This section analyses and reviews the current literature
+to determine which LSM theories are used in PAL platforms
+to evaluate and understand e-learners’ LSs. Furthermore, this
+analysis also identifies which of the LSMs are better adapted
+to the online learning environment. The LS framework selec-
+tion includes the selection of the LSM, how the information
+model is built (data collection procedure) with respect to the
+data source and the corresponding attributes (predictors) used
+for identifying learners’ LSs [25], [26]. In addition to the
+LSM, the types of data collection methods, data sources and
+variables that can be tracked for each of the selected studies
+in this SLR are detailed in Table 1.
+1) LEARNING STYLES THEORY MODEL
+In the area of the automatic detection of LSs, the LS model
+plays a vital role in directing researchers during that process
+[26]. Identifying and examining these models are important
+as these approaches can be applied to sustain learners’ LSs
+and subsequently improve learners’ learning performances by
+engaging and motivating them [2], [6], [13], [41]. To deter-
+mine LSs, well-known and tested learning models have
+been suggested to identify the initial LS of each learner
+[2]. Among the prominent models identified in the selected
+studies are the VARK model, Kolb model, Felder and Silver-
+man model (FSLSM), Myer-Briggs Type Indicator Theory
+(MBTI), Gardner Theory of Multiple Intelligence (GTMI)
+and the Honey and Mumford model [2], [5]. These theories
+suggest that individuals can be classified according to their
+‘style’ of learning and postulate different views on defining
+and categorising LSs [5].
+48396
+VOLUME 11, 2023
+S. G. Essa et al.: Personalized Adaptive Learning Technologies Based on ML Techniques to Identify LSs
+FIGURE 3. Research development process of PAL based on ML techniques to classify LS automatically and dynamically [6].
+FIGURE 4. Platforms that stimulated research on PAL based on ML to
+identify LSs.
+The FSLSM for engineering education classifies learn-
+ers according to their position on several scales to evaluate
+how students ‘‘perceive and process information’’ [42]. Their
+model categorises learners based on the different levels of the
+learning process [2]. The model describes LS in more detail
+by characterising each learner according to four aspects –
+called dimensions – which each cover a stage in the course
+of receiving and processing information, namely Perception,
+Input, Processing And Understanding [42], [43]. Within each
+dimension, there are two opposite LS preferences and each
+learner has a dominant preference in each dimension [42],
+[43]. In the Information Processing dimension, learners pre-
+fer to process information actively through active engagement
+with information or reflectively through introspection [42],
+[43]. In the Information Perception dimension, the learner
+prefers to perceive or take in information through sensing or
+intuitive LS preferences [42], [43]. In the Information Recep-
+tion dimension, the learner prefers information to be pre-
+sented either through visual or verbal sensory channels [42],
+[43]. In the Information Understanding dimension, learners
+prefer to progress towards understanding sequentially in con-
+tinual steps or globally in a holistic way [42], [43].
+The FSLSM rates the learner’s LS on a scale of four
+dimensions to define 16 distinct LSs. Felder and Solomon
+developed the Index of Learning Styles (ILS), a 44-item online
+questionnaire for identifying the LS according to FSLSM
+[42], [43]. The ILS questionnaire is structured so that students
+VOLUME 11, 2023
+48397
+S. G. Essa et al.: Personalized Adaptive Learning Technologies Based on ML Techniques to Identify LSs
+are required to complete a sentence by choosing one of two
+options representing opposite ends of one of the LS scales
+[42], [43].
+On the contrary, Kolb defines learning ‘‘as the process
+whereby knowledge is created through the transformation of
+experience’’ [44]. Kolb’s LS model is based on the Experi-
+ential Learning Theory and has four distinct LSs, which are
+based on a four-stage learning cycle [44]. The four stages
+are Concrete Experience (CE), Reflective Observation( RO),
+Abstract Conceptualisation (AC) and Active Experimenta-
+tion (AE). The combinations of learning cycles produce four
+LSs namely Accommodating: (CE/AE); Diverging: (CE/RO);
+Assimilating: (AC/RO); Converging: (AC/AE). The instru-
+ment developed by Kolb for identifying LSs based on Kolb’s
+LSM is the learning style inventory (LSI) [44]. It is a 12-item
+forced-choice ranking questionnaire [6], [13], [44].
+The results of the content analysis according to the fre-
+quency with which LSMs have been applied in the PAL
+system to identify learners’ LSs automatically are depicted
+in Fig. 5. Although there exist many LS models, the FSLSM
+appears to be the most frequently used in the selected articles.
+FIGURE 5. Frequency of learning style theories used in PAL to classify
+learners’ LSs.
+Researchers have selected the FSLSM due to several
+advantages of this model which include the following:
+- FSLSM describes LSs in greater detail by characterising
+each learner’s preference according to four dimensions
+and using scales to represent the strength of the LS
+preferences [12], [13].
+- Furthermore, the descriptions indicate the types of
+learning objects (LO) that can be included in each LS
+preference and this is beneficial as knowing the LS pref-
+erences of LOs assists in identifying the LS of learner
+sequences [10]. For example, visual learners remember,
+understand and assimilate information more effectively
+when it is presented in a visual way. Visual learners
+prefer LOs such as videos and pictures [42] whereas
+verbal learners prefer to learn from textual representa-
+tions, which may be written or spoken [42]. Verbal learn-
+ers prefer textual and audio explanations [42]. Active
+learners prefer to learn and understand information best
+by working actively in the external world and apply-
+ing the information [42]. They prefer LO which entails
+for example practical problem solving [42]. Reflective
+learners prefer to learn by thinking things through and
+working individually [42]. Thus, this group of learners
+prefer introspective examination and manipulation of
+information [42]. They prefer LO such as examples and
+exercises [42].
+- The ILS instrument has been effectively used in several
+studies for instruction and design in determining LSs as
+the number of dimensions can be controlled and can be
+easily interpreted and implemented [13].
+2) DATA COLLECTION
+A learner model can be statically initialised collaboratively
+by asking learners to fill in a questionnaire. This approach is
+the simplest method; it is static, and its accuracy is depen-
+dent on learners providing explicit feedback and attention in
+completing the questionnaire [45]. The automatic approach
+on the other hand is dynamic and more accurate than the
+collaborative approach [45]. The learner’s adaptable model is
+built automatically by the adaptive system through intelligent
+and ML approaches that use the learner’s interactions and
+behaviours while they are learning and interacting with the
+system [30].
+a: DATA SOURCE AND CORRESPONDING ATTRIBUTES
+According to [25], the possible sources of data and corre-
+sponding attributes can be categorised as follows:
+- Log files (LFs): According to Reference [25] the mea-
+surable input data related to ‘learning activities and
+behaviours’ are analysed and interpreted based on out-
+put LF data. The corresponding attributes used for the
+classification of this source varied. Some of the cor-
+responding attributes include tracking learner activi-
+ties, using forums, performances, characteristics and the
+type of objects chosen. Studies differ on the differ-
+ent attributes used for detecting LSs [25]. For exam-
+ple, the study by [12] employed generic behaviour
+patterns investigated by [11] to automatically identify
+LSs. These included content objects, outlines, examples,
+self-assessment tests, exercises and discussion forums.
+On the other hand, [37] detected LSs using attributes
+related to assessments such as quiz grades, chats, mouse
+click counts and keyboard input counts within the virtual
+machine window. Reference [34] used online reactions
+on an e-learning platform to predict LSs. All three stud-
+ies ([12], [34], [37]) used Felder-Silverman’s LSM.
+- Users’ history and background data: This source
+includes static information (SI) [25]. It includes corre-
+sponding information such as gender, education majors,
+demographic data and culture [25]. Reference [40]
+48398
+VOLUME 11, 2023
+S. G. Essa et al.: Personalized Adaptive Learning Technologies Based on ML Techniques to Identify LSs
+utilised both SI (demographic data) and LFs (learner
+behaviours) in their study. Other studies that used both
+SI and LFs are the studies by [46], [47], [48], and [49].
+One of the studies that used only SI was the study
+conducted by [50].
+- Others (O): Besides those directly associated with LSs,
+as indicated above, other personalisation sources that
+were considered together with LS in some cases include
+background knowledge, language and motivation level.
+An example is the study by [51] where the LS was iden-
+tified using various parameters such as image streaming
+and cognitive and sensory abilities. In [52], the learners’
+skills (level of knowledge) and their prior knowledge
+were the key characteristics that were used in the auto-
+matic detection of LSs. One of the studies that used LFs
+and O was the study conducted by [33]. Other studies
+that used both SI and O are the studies by [36] and
+[53]. Reference [36] took as input a minimum number of
+personal (age and gender) and cognitive characteristics
+(prior academic performance) and only four questions
+about the FSLSM dimensions to identify the LS. Refer-
+ence [51] includes all three sources in their study.
+b: VARIABLES/ATTRIBUTES
+According to [54], the types of variables on which person-
+alised learning can be tracked and provided in an education
+system can be classified as the following:
+- Knowledge data (KD): This refers to, for example, the
+number of correct or incorrect answers in a test.
+- Chronometric data (CD): This refers to, for example, the
+time spent on reading the material, time spent reviewing
+quizzes and the total task time.
+- Try data (TD): This refers to, for example, the number of
+attempts to determine the correct answer and the review
+attempts for each question.
+- Navigation data (ND): This refers to, for example, the
+frequency of a topic or exercise that has been selected,
+the ‘number of watched videos’ and the ‘number of posts
+in the forum’.
+It is important to note that the study conducted by [5] and [55]
+are the only two studies documented in this SLR that utilised
+and compared two LSMs. Reference [5] used attributes from
+Kolb’s model and the FSLSM and compared the two mod-
+els to determine the most appropriate model based on the
+performance of different models in identifying LSs whereas
+[55] attempted to identify attributes from GTMI and FSLSM.
+This is important to consider for enhancing the performance
+and efficacy of the different prediction and classification
+models [25].
+C. WHICH MACHINE LEARNING TECHNIQUES ARE
+FREQUENTLY EMPLOYED FOR ADAPTIVE EDUCATION
+SYSTEMS TO AUTOMATICALLY IDENTIFY LEARNERS’
+LEARNING STYLES?
+The first step of the integration process entails selecting the
+correct LS framework (see Section III-B). This is followed
+by the selection, training, testing and evaluation of the AI
+classification models to detect and recognise a new learner’s
+LS. This section provides an overview and the frequency
+of the AI techniques employed in the current literature for
+adaptive education systems to identify LSs automatically,
+as summarised in Table 1. The evaluation methods of the AI
+classification models are discussed in Section III-D.
+1) FREQUENCY OF MACHINE LEARNING USED TO DETECT
+LEARNING STYLES
+To learn the associations between e-learners’ actions in
+e-learning environments and their corresponding LSs based
+on the LSM implemented, the ML technique for detection
+and recognition of LSs is firstly trained with the user model
+and or the results of the LS identification instrument collected
+from the learners [26]. After the training, the ML technique
+can automatically and dynamically classify a new learner’s LS
+using their updated user model [6], [26]. Fig. 6 indicates the
+frequency of the ML algorithms used in the detection of LS
+in the current studies. Table 1 shows an overview and related
+references of ML methods listed in column AI techniques for
+all the studies reviewed in the current SLR. The three most
+popular methods implemented are decision trees, followed by
+artificial neural networks (ANNs) and Bayesian networks.
+FIGURE 6. Frequency of learning style classification (ML) algorithms.
+The decision tree structure is a tree in which each branch
+node denotes the selection between various alternatives and
+each leaf node represents a decision. Statistical metrics are
+used to determine the branching of the nodes [2], [26], [56].
+There are numerous algorithms within decision trees used to
+classify learners based on their LSs. A few of these deci-
+sion tree-based algorithms include ID3, C4.5, J48, NBTree,
+random forests and RandomTree. These differ based on the
+order in which the attributes are selected and the splitting
+criterion used to build the tree [2], [26], [56]. Nineteen articles
+(Fig. 6) documented in this review have used this approach to
+automatically identify an LS.
+Artificial neural network (ANN) consists of several inter-
+locked neurons which work together to process information
+and solve problems [9]. The learning process in an ANN
+VOLUME 11, 2023
+48399
+S. G. Essa et al.: Personalized Adaptive Learning Technologies Based on ML Techniques to Identify LSs
+entails updating the network architecture and connection
+weights [57], [58]. Backpropagation is a supervised learning
+algorithm for determining weights in a multilayer perceptron
+and is prevalent among researchers and users of ANN [57],
+[58]. Fourteen articles (Fig. 6) documented in this review used
+this approach.
+Deep learning (DL) is an extension of classical NN in that it
+combines computing power and NN with more hidden layers
+so that the algorithms can handle complex data with various
+structures [59]. Besides ANN, a few popular DL algorithms
+include convolutional neural networks (CNN) and recurrent
+neural networks (RNN) [2], [60]. The study by [51] is the only
+study documented in this SLR that utilised CNN and RNN.
+Among the prominent AI techniques identified in the
+selected studies of this SLR are Fuzzy Cognitive Maps
+(FCM);
+K-nearest
+Neighbour
+(KNN);
+Support
+Vector
+Machines (SVMs); K-means; Genetic Algorithm (GA); Ant
+Colony System (ACS); Particle Swarm Optimisation (PSO);
+Incremental Dynamic Case-Based Reasoning (IDCBR); and
+Logistic Regression (LR).
+Other classification algorithms not so commonly used
+were classified as Others. These include Linear Discriminant
+Analysis [55], semantic clustering [29], simple logistics [61],
+Kstar, OneR, JRIP and Decision Table [62]. In Reference
+[34], three different classification methods namely Classifier
+Chains, Binary Relevance, and Label Powerset were applied
+to make a model for LS prediction. Reference [53] modified
+a collaborative filtering model, which is typically used for
+recommendation tasks, to also predict the learners’ LSs.
+2) FREQUENCY OF CLASSIFICATION METHODS
+COMBINATIONS AND COMPARISONS
+Of the 48 articles reviewed, 16 used a single method to deter-
+mine LSs (Fig. 7). Advanced algorithms combining single
+algorithms in various ways to produce greater accuracy, such
+as hybrid or ensemble classification, have shown positive
+results in determining LS automatically and dynamically [25],
+[63], [64]. Table 1 shows an overview and related references
+of ML methods combination and comparison listed in column
+AI techniques for all the studies reviewed in the current SLR.
+In hybrid (combined) learning, the first approach produces
+the initial output which will be processed by the second
+approach to acquiring the final output [63]. References [10],
+[14], [46], [50], [51], and [65] are some examples identified in
+this SLR that used a combination of techniques to determine
+the LS.
+The approach presented by [10] used a 2-step process:
+learners’ sequences were extracted from the LFs and then,
+they were transformed into an input of the K-means algorithm
+where each cluster was labelled with an LS combination.
+Thereafter, the Naïve Bayes algorithm was used to predict the
+LS for a new sequence.
+Reference [14] designed a loosely coupled multi-step
+hybrid architecture where the main feature was the compu-
+tation of additional information at each step to feed forward
+FIGURE 7. Frequency of classification methods, combinations and
+comparisons.
+into the next step of the architecture. To detect LSs, the archi-
+tecture was broken down into three steps [14]. The first step
+produced an initial prediction of the LS preference, which
+was then combined with the behaviour data in the second
+step to compute a confidence value in the initial prediction
+[14]. Thereafter, the data were split into high and low confi-
+dence [14]. Lastly, two identification algorithms for high and
+low-confidence data were used [14].
+In [50], clustering (K-means) and two classification algo-
+rithms were used to predict LS combinations in the study.
+An SVM was used to predict the individual LSs and a DT
+was used to predict the LS combination. The study by [51]
+is the only study documented in this SLR that proposed a
+personalised e-learning system based on a combination of
+DL and ML algorithms that could be adapted to the LS and
+level of a learner in creating an enhanced understanding of
+the course [51]. NNs have been combined with fuzzy logic
+to identify the LSs of learners as per FSLSM categories, for
+example, in the approach proposed by [46] and [65].
+Ensemble learning (comparison) entails combining multi-
+ple models into one that is usually more accurate than the best
+of its components [64]. Notable examples include the studies
+by [5], [37], and [66] took into consideration multiple AI
+techniques for determining students’ LSs. Their tool provided
+the facility to compare AI-based classification techniques
+with the performance of developed models. Besides applying
+ANN, Reference [5] also employed DT on the sequences of
+learner actions. The results of the simulation data indicated
+that NNs displayed higher performance in comparison to DT
+based on kappa statistics (KS) values. Reference [37], on the
+other hand, in their ensemble algorithm constructed the con-
+stituent SVMs and DT models to predict LSs automatically.
+The testing data was classified by both algorithms indepen-
+dently. Reference [66] compared J48, BN, Naïve Bayes and
+48400
+VOLUME 11, 2023
+S. G. Essa et al.: Personalized Adaptive Learning Technologies Based on ML Techniques to Identify LSs
+random forest using experimental data; the J48 algorithm
+performed the best.
+Studies by [8] and [61] used both hybrid and ensem-
+ble classification. Research by [61] focused on develop-
+ing dynamic methods for the search and identification of a
+learner’s preferred LS using case-based reasoning (CBR) and
+NN. The efficiency of the algorithm for the selection of LSs
+via CBR combined with NN was compared with the results
+obtained by other LS selection algorithms: simple logistic,
+Naïve Bayes, tree J48 and NN [61].
+The study by [53] proposed an innovative AI approach
+that enabled collaborative filtering-based AI models driven
+by LS prediction to provide content recommendations per-
+sonalised specifically to the LS of each learner. A single
+model was designed that performed both prediction and
+recommendation.
+D. WHAT EVALUATION METHODS ARE USED TO
+DETERMINE THE PERFORMANCE AND ACCURACY OF THE
+ARTIFICIAL INTELLIGENCE TECHNIQUES IMPLEMENTED
+TO PREDICT A NEW LEARNER’s LEARNING STYLE?
+In this section, the research approach and evaluation methods
+used in the current literature to determine the effectiveness
+and measure the performance and accuracy of the AI tech-
+nologies implemented to predict a new learner’s LS are dis-
+cussed. Table 1 specifies a summary of the research approach
+and evaluation methods for all the studies reviewed in the
+current SLR.
+The research approach in data-driven approaches requires
+collecting relevant information for the user model (see 3.2);
+thereafter, AI classification algorithms (see 3.3) are used
+to identify LS preferences automatically [26]. The research
+approach of the works was classified into three groups based
+on the categories by [26]:
+- Simulation (S): these researchers evaluate the pro-
+posed approach through simulations. Notable examples
+include those in [5], [35], and [46].
+- Theoretical (T): the authors present a new framework
+or approach where there are no experiments or empir-
+ical evaluations. Typically, these articles describe an
+initial approach that will be discussed comprehensively
+in future works. Notable examples include those in [6],
+[29], [39], [40], and [51].
+- Experiment (E): these researchers evaluate the pro-
+posed method through empirical evaluations. Typically,
+the experimental setting comprises an LS instrument,
+an education system where the proposed method is
+tested and learners who interact with the system [26].
+The majority of the studies fall into this category.
+ML architectures that perform well in mapping students’
+actions in the system and identifying learners’ LSs that ‘best
+fit’ can capture learners’ LSs accurately and so can pro-
+vide more accurate adaptivity. Therefore, it is important to
+investigate the evaluation methods in the current literature to
+determine the efficacy, accuracy and performance of the AI
+techniques implemented in predicting a new learner’s LS.
+The efficacy and performance of the AI-based PAL plat-
+form in predicting a new learner’s LS were evaluated by a
+few of the studies. The evaluation methods included surveys
+and statistical evaluation matrices that included accuracy (A),
+precision (P), recall (R) and F-measure (F1). Other methods
+for evaluating models include Receiver Operating Character-
+istics (ROC), Area Under the Curve (AUC) among others.
+In the research presented by [67], these evaluation matrices
+were used to evaluate the models.
+In the work of [5], simulations were generated with two AI
+techniques and two LS theories. A simulation first generated a
+model structure and, thereafter, measured the model’s perfor-
+mance. Statistical evaluation was used to establish the most
+appropriate model for implementation in a specific learn-
+ing environment. The model with the highest kappa statis-
+tics (KS) value and the least root mean square error (RMSE)
+value indicated the most appropriate one. After the model/s
+were selected and trained for a particular learner’s environ-
+ment, these were used to identify learners and determine their
+LS accordingly.
+A variety of other statistical evaluation tests were com-
+pared between adaptive and non-adaptive (A&NA) systems,
+such as learning rate and process (learning objects, tests
+and sessions), performance (tests, satisfaction and popular-
+ity) [46] and pre- and post-test performance (Pre&P) and
+t-tests [68].
+E. WHAT LEARNING SUPPORTS ARE PROVIDED IN THE
+CURRENT LITERATURE TO PROVIDE PERSONALISED
+LEARNING ACCORDING TO THE LEARNERS’
+LEARNING STYLES?
+This question deals with the second step of the integration
+process which corresponds to the recommendation. To under-
+stand how the adaptive/personalised learning processes are
+provided by systems in the selected studies in this review,
+various kinds of learning support require examination [20].
+This section explores and discusses the learning support and
+applications that are provided in PAL to identify LSs in
+the current literature. Five applicable categories of learning
+support for the learning processes of adaptive/personalised
+systems are classified in this SLR based on the previous
+review studies by [20] and [25]:
+- Personalised interfaces (UI)
+- Personalised learning contents and resources (LC)
+- Personalised learning paths (LP)
+- Adaptation general not specified (NON)
+- Intelligent
+tutoring
+and
+recommendation
+systems
+(TUT).
+The distribution of learning support types provided by adap-
+tive/personalised systems to facilitate the learning processes
+based on LSs in the selected studies is indicated in Table 1
+and depicted in Fig. 8.
+The most frequently adopted learning support type used
+in 17 of the 48 selected studies on adaptive/personalised
+systems was personalised learning content. Notable examples
+of systems presented in the work by [37] and [66] provide
+VOLUME 11, 2023
+48401
+S. G. Essa et al.: Personalized Adaptive Learning Technologies Based on ML Techniques to Identify LSs
+FIGURE 8. Learning styles application in developing adaptive learning
+systems.
+a presentation of adaptive learning resources according to
+learners’ LSs. In [37], after the dynamic identification of LSs,
+the adaptive lab learning content manager updated the lab
+content on the web user interface by choosing and construct-
+ing a suitable format of lab materials from the lab content
+repository.
+The second most frequent type of LS support – 11 out of
+48 – provides each user of the system with a personalised
+learning path. For example, the architecture proposed by
+[40] is based on the FSLSM to detect the initial learning
+profile to adapt the learning path according to the learners’
+LSs. Other types of support included personalised interfaces.
+Only one study identified in this review – [68] – provided
+an adaptive personalised interface. Applications such as TUT
+systems that personalise learning for students with different
+backgrounds, abilities, behaviours and knowledge were also
+supported [17].
+Some studies mention the general adaptation of LSs but do
+not specify any particular learning support. It is also worth
+noting that the papers identified in this review may also have
+more than one target for the adaptation of LSs. The model
+developed by [5], for example, can be used to classify learners
+and identify their LSs which can then be mapped to learning
+content and learning paths to provide personalised education.
+IV. CONCLUSION
+In this SLR, influential scientific literature was analysed to
+identify any emerging trends and gaps in current research
+in terms of the LSM and possible AI methods to be used
+for PAL platforms. In particular, four databases were system-
+atically searched and the reference lists of relevant studies
+were screened, ultimately resulting in the 48 studies involved
+in this review. The following references were the studies
+involved: [5], [6], [8], [10], [12], [14], [15], [16], [17], [18],
+[29], [31], [32], [33], [34], [35], [36], [37], [38], [39], [40],
+[41], [46], [47], [48], [49], [50], [51], [52], [53], [55], [61],
+[62], [65], [66], [67], [68], [69], [70], [71], [72], [73], [74],
+[75], [76], [77], [78], [79].
+The analysis presented in this paper has allowed an
+enhanced understanding of the trends and characteristics of
+how PAL based on ML approaches has been used to identify
+LSs automatically and dynamically from 2015 to 2022.
+Additionally, research issues across the literature that were
+investigated and discussed included the platforms that stim-
+ulated research, identifying which of the LS models was
+more adapted to the online learning environment, the evalua-
+tion methods and learning supports provided. A summary of
+recent developments and open issues, recommendations and
+future research opportunities and limitations of the SLR are
+specified in the following subsections.
+A. SUMMARY OF CURRENT DEVELOPMENTS AND OPEN
+ISSUES
+E-learning has gained significant attention in recent times
+as it has enabled global access to information for learners
+due to rapid advances in technologies compounded by the
+global pandemic. The findings of this study reveal the positive
+results of this emerging field in terms of its applications and
+developments using AI approaches to implement intelligent
+and adaptive e-learning environments based on learners’ LSs
+in enhancing e-learning to optimise individual learning.
+The research development process entailed the classifica-
+tion that was responsible for detecting the LSs and storing
+them in the learners’ profiles which are used by the recom-
+mendation step to provide the desired adaptability [25], [30].
+The articles reviewed in this paper emphasise the application
+of LSMs in the development of adaptive learning systems
+and provide insights into ML algorithms used to classify
+learners’ LSs in the current literature. Through this study,
+several interesting developments and opportunities for further
+research were identified.
+Various platforms with relevant learning scenarios that
+adapt to learners’ LSs and that have been implemented in
+the PAL system have been found in the literature. E-learning
+and MOOC platforms have received the most interest. PAL
+platforms based on LS have also been applied to various
+other platforms such as ITS, mobile applications, game-based
+environments and virtual laboratories.
+Although many LSMs based on the automatic identifi-
+cation of LSs are used in PAL in the current literature,
+the FSLSM appears to be the most frequently used in
+technology-enhanced learning and is regarded as one of the
+best models to use in adaptive systems to identify learners’
+LSs in e-learning environments [13], [21]. Articles also dif-
+fered on the number of FSLSM dimensions to consider for
+LS detection. For example, the study by [40] used only two
+dimensions for LS detection whereas [18] considered using
+all 4 FSLSM dimensions in their study.
+The information that was utilised to construct the user
+model and the variables for predicting LS preferences were
+also analysed in each article. The potential data sources
+identified predominately entailed tracking learner behaviours
+through interactions and behaviours with the system interface
+[25]. The types of variables that can be traced in an education
+system in this review were classified as KD, CD, TD and ND.
+The identification of these sources shows a ‘‘dynamic picture
+48402
+VOLUME 11, 2023
+S. G. Essa et al.: Personalized Adaptive Learning Technologies Based on ML Techniques to Identify LSs
+of potential attributes and behaviours’’ that can be considered
+in identifying learners’ LSs automatically and dynamically
+[25]. Even with similar LS frameworks, the variables used in
+former studies can be diverse [25].
+This SLR focuses on the automatic and dynamic iden-
+tification of LSs in the current literature using a data-
+driven approach. Through reviewing the current literature,
+the emerging trends of potential AI techniques employed for
+PAL platforms, as well as the methods and algorithms used to
+predict LS, were analysed. AI approaches receive significant
+attention and are used in several applications to personalise
+and adapt e-learning experiences to classify students based
+on their LSs to enhance their e-learning experience.
+Among the ML algorithms employed for the adaptive edu-
+cation systems included in this review are NNs, DT, the KNN,
+the K-means, BN, FCM, SVM, ACS, GA, CBR, PSO, LR,
+CNN and RNN. Each of the methods has its own strengths.
+The most popular methods implemented were DT followed
+by ANN. The study by [51] is the only study documented
+in this SLR that proposed a personalised e-learning system
+based on DL and ML algorithms that could be adapted to the
+LS and level of the learner.
+Many of the articles used a single AI technique, where
+a single algorithm was constructed on the dataset mostly
+observed for automatically determining the LS. Furthermore,
+there is growing interest in considering multiple AI tech-
+niques, either by combining and/or comparing techniques, for
+determining students’ LSs [25]. This leaves an opportunity –
+still less explored – for more advanced algorithms to be
+combined in various ways to produce higher accuracy.
+Moreover, a significant number of researchers have used
+NNs in the context of adaptive education systems to enhance
+learning. Limited work has been documented to include more
+advanced student behaviour classification models such as
+combining deep neural networks in various ways to produce
+higher accuracy with more meaningful behaviour features.
+The fourth question analysed articles concerning the
+research approach implemented and the evaluation methods
+to determine the efficacy and performance of the AI-based
+PAL platforms in predicting a new learner’s LS. The research
+approach of the works was classified into theoretical, exper-
+imental and simulation studies. Among the selected studies,
+certain studies presented a new framework or approach that
+could be extended in future works. Studies that provided
+empirical evaluation methods and testing on the system indi-
+cated positive initial results. The evaluation methods included
+surveys, statistical evaluation tests and statistical evaluation
+matrices.
+The findings indicated promising results for the application
+of the learner model into an adaptive learning system accord-
+ing to the learner preferences implemented in the selected
+studies in this review. In the current SLR, the learning support
+and applications that are provided in PAL learning to identify
+LSs are classified as follows: UI, LC, LP and TUT. Adap-
+tive LC and resources received the most interest. Some of
+the studies may also have had more than one target for the
+adaptation of LSs.
+B. RECOMMENDATIONS AND FUTURE RESEARCH
+OPPORTUNITIES
+According to [25], the integration of IT-, psychology- and
+pedagogy-related areas has gained significant attention over
+the past few years. The results of the current SLR indicate
+an increasing interest in the impact of LSM and the potential
+AI techniques employed for PAL platform research. DL using
+AI is gaining popularity and impacts e-learning by providing
+intuitive algorithms and automated delivery of e-learning
+content through modern learning management system (LMS)
+platforms [59]. ANNs using back propagation are commonly
+used, however, limited work has been conducted on the com-
+parison of DL technologies in this context.
+The findings suggest the need to consider and stimulate
+further empirical investigation in considering the adoption
+of advanced DL algorithms, such as deep neural networks,
+and opportunities for comparing DL architectures as they
+support and add value to each other, which can result in higher
+adaptability and recommendation ability [25].
+Thus, what remains under-researched based on the afore-
+mentioned recommendations is how advanced classification
+models such as DL architectures can be combined in dif-
+ferent ways. To support ongoing advancement, personalised
+learning requires research across the continuum of PAL based
+on ML to automatically and dynamically determine the iden-
+tification of LSs to optimise individual learning. That said,
+research on the comparison of DL architectures incorporated
+with LSM to adapt and personalise learning strategies for
+each learner is needed. In addition, an investigation of the
+evaluation of the performance of these approaches in clas-
+sifying learners’ LSs is equally important.
+C. LIMITATIONS
+Although this research provides insight into the impact of
+LSMs and potential AI techniques employed for PAL plat-
+forms, it is important to specify the limitations. A possi-
+bility that the SLR process may have missed some relevant
+published papers due to several reasons exists. First, this
+review only included research articles published from 2015 to
+2022 because previous publications by [25] and [26] had
+reviewed the automatic detection of LSs before 2015. Sec-
+ond, although the keywords used in the search process are
+documented in the methodology section of this SLR, various
+other search strings that can be constructed and synonyms
+that could be used relevant to the area being investigated
+are possible. Third, many search engines, besides the search
+systems that were considered in this SLR and documented in
+the methodology section, exist; consequently, papers in these
+databases might not have been considered.
+However, the authors believe that the papers chosen for
+this SLR are representative of the entire literature and that
+any papers not identified in this study would not significantly
+VOLUME 11, 2023
+48403
+S. G. Essa et al.: Personalized Adaptive Learning Technologies Based on ML Techniques to Identify LSs
+TABLE 1. Platforms, LS theories, AI techniques, evaluation methods and adaptation implemented in PAL to automatically identify LS.
+48404
+VOLUME 11, 2023
+S. G. Essa et al.: Personalized Adaptive Learning Technologies Based on ML Techniques to Identify LSs
+TABLE 1. (Continued.) Platforms, LS theories, AI techniques, evaluation methods and adaptation implemented in PAL to automatically identify LS.
+VOLUME 11, 2023
+48405
+S. G. Essa et al.: Personalized Adaptive Learning Technologies Based on ML Techniques to Identify LSs
+TABLE 1. (Continued.) Platforms, LS theories, AI techniques, evaluation methods and adaptation implemented in PAL to automatically identify LS.
+change the results, even if the study were to be replicated at
+a low cost and rapidly.
+APPENDICES
+See Table 1.
+REFERENCES
+[1] K. Bijlani, K. R. Jayahari, and A. Mathew, ‘‘A-view: Real-time collab-
+orative multimedia e-learning,’’ in Proc. 3rd Int. ACM Workshop Mul-
+timedia Technol. Distance Learn., Scottsdale, AZ, USA, Dec. 2011,
+pp. 13–18.
+48406
+VOLUME 11, 2023
+S. G. Essa et al.: Personalized Adaptive Learning Technologies Based on ML Techniques to Identify LSs
+[2] A. Moubayed, M. Injadat, A. B. Nassif, H. Lutfiyya, and A. Shami, ‘‘E-
+learning: Challenges and research opportunities using machine learning
+& data analytics,’’ IEEE Access, vol. 6, pp. 39117–39138, 2018, doi:
+10.1109/ACCESS.2018.2851790.
+[3] A. El Mhouti, M. Erradi, and A. Nasseh, ‘‘Using cloud computing ser-
+vices in e-learning process: Benefits and challenges,’’ Educ. Inf. Technol.,
+vol. 23, no. 2, pp. 893–909, Mar. 2018.
+[4] H. Peng, ‘‘Personalized adaptive learning: An emerging pedagogical
+approach enabled by a smart learning environment,’’ in Foundations and
+Trends in Smart Learning, M. Chang, Eds. Singapore: Springer, 2019,
+pp. 171–176, doi: 10.1007/978-981-13-6908-7_24.
+[5] R. Bajaj and V. Sharma, ‘‘Smart education with artificial intelligence
+based determination of learning styles,’’ Proc. Comput. Sci., vol. 132,
+pp. 834–842, Jan. 2018, doi: 10.1016/j.procs.2018.05.095.
+[6] B. Hmedna, A. El Mezouary, and O. Baz, ‘‘Identifying and tracking
+learning styles in MOOCs: A neural networks approach,’’ Adv. Intell. Syst.
+Comput., vol. 520, no. 2, pp. 125–134, 2017, doi: 10.1007/978-3-319-
+46568-5_13.
+[7] P. Brusilovsky, ‘‘Adaptive and intelligent technologies for web-based edu-
+cation web-based educational systems: A review of technologies,’’ Künstl.
+Intell., Special Issue Intell. Syst. Teleteaching, vol. 13, no. 4, pp. 19–25,
+1999.
+[8] B. Hmedna, A. El Mezouary, and O. Baz, ‘‘A predictive model for
+the identification of learning styles in MOOC environments,’’ Clus-
+ter Comput., vol. 23, no. 2, pp. 1303–1328, Jun. 2020, doi: 10.1007/
+s10586-019-02992-4.
+[9] K. Colchester, H. Hagras, D. Alghazzawi, and G. Aldabbagh, ‘‘A sur-
+vey of artificial intelligence techniques employed for adaptive edu-
+cational systems within e-learning platforms,’’ J. Artif. Intell. Soft
+Comput. Res., vol. 7, no. 1, pp. 47–64, Jan. 2017, doi: 10.1515/
+jaiscr-2017-0004.
+[10] O. E. Aissaoui, Y. E. A. El Madani, L. Oughdir, and Y. E. Allioui, ‘‘Com-
+bining supervised and unsupervised machine learning algorithms to predict
+the learners’ learning styles,’’ Proc. Comput. Sci., vol. 148, pp. 87–96,
+Jan. 2019, doi: 10.1016/j.procs.2019.01.012.
+[11] S. Graf, Kinshuk, and T. Liu, ‘‘Supporting teachers in identifying stu-
+dents’ learning styles in learning management systems: an automatic stu-
+dent modelling approach,’’ Educ. Technol. Soc., vol. 12, no. 4, pp. 3–14,
+2009.
+[12] J. Bernard, T.-W. Chang, E. Popescu, and S. Graf, ‘‘Using artifi-
+cial neural networks to identify learning styles,’’ in Proc. Int. Conf.
+Artif. Intell. Educ., Madrid, Spain, 2015, pp. 541–544, doi: 10.1007/
+978-3-319-19773-9.
+[13] O. Zine, A. Derouich, and A. Talbi, ‘‘A comparative study of the
+most influential learning styles used in adaptive educational environ-
+ments,’’ Int. J. Adv. Comput. Sci. Appl., vol. 10, no. 11, pp. 520–528,
+2019.
+[14] J. Bernard, E. Popescu, and S. Graf, ‘‘Improving online education through
+automatic learning style identification using a multi-step architecture with
+ant colony system and artificial neural networks,’’ Appl. Soft Comput.,
+vol. 131, Dec. 2022, Art. no. 109779.
+[15] R. Xue-Jun, Z. Ya-Ni, Z. Wei-Hu, and W. Xiao-Shuang, ‘‘Research
+and practice of user learning style model recognition based on
+big data,’’ in Proc. Int. Conf. Internet, Educ. Inf. Technol. (IEIT),
+Suzhou, China, Apr. 2021, pp. 270–273, doi: 10.1109/IEIT53597.2021.
+00066.
+[16] J. Bernard, T.-W. Chang, E. Popescu, and S. Graf, ‘‘Learning style identi-
+fier: Improving the precision of learning style identification through com-
+putational intelligence algorithms,’’ Exp. Syst. Appl., vol. 75, pp. 94–108,
+Jun. 2017, doi: 10.1016/j.eswa.2017.01.021.
+[17] K. Crockett, A. Latham, and N. Whitton, ‘‘On predicting learning
+styles in conversational intelligent tutoring systems using fuzzy decision
+trees,’’ Int. J. Hum. Comp. Stud., vol. 97, pp. 98–115, Jan. 2017, doi:
+10.1016/j.ijhcs.2016.08.005.
+[18] I. Azzi, A. Jeghal, A. Radouane, A. Yahyaouy, and H. Tairi, ‘‘A robust
+classification to predict learning styles in adaptive e-learning systems,’’
+Educ. Inf. Technol., vol. 25, pp. 437–448, Aug. 2020, doi: 10.1007/s10639-
+019-09956-6.
+[19] I. O. Pappas and M. N. Giannakos, ‘‘Rethinking learning design in IT
+education during a pandemic,’’ Frontiers Educ., vol. 6, pp. 1–8, Apr. 2021,
+doi: 10.3389/feduc.2021.652856.
+[20] H.
+Xie,
+H.-C.
+Chu,
+G.-J.
+Hwang,
+and
+C.-C.
+Wang,
+‘‘Trends
+and
+development
+in
+technology-enhanced
+adaptive/personalized
+learning: A systematic review of journal publications from 2007 to
+2017,’’ Comput. Educ., vol. 140, Oct. 2019, Art. no. 103599, doi:
+10.1016/j.compedu.2019.103599.
+[21] E. Jando, Meyliana, A. N. Hidayanto, H. Prabowo, H. L. H. S. Warnars,
+and Sasmoko, ‘‘Personalized e-learning model: A systematic literature
+review,’’ in Proc. Int. Conf. Inf. Manage. Technol. (ICIMTech), Yogyakarta,
+Indonesia, Nov. 2017, pp. 238–243.
+[22] A. A. Kardan, M. Aziz, and M. Shahpasand, ‘‘Adaptive systems: A content
+analysis on technical side for e-learning environments,’’ Artif. Intell. Rev.,
+vol. 44, no. 3, pp. 365–391, Oct. 2015.
+[23] J. Talaghzi, A. Bennane, M. M. Himmi, M. Bellafkih, and A. Benomar,
+‘‘Online adaptive learning: A review of literature,’’ in Proc. 13th Int. Conf.
+Intell. Syst., Theories Appl., Rabat, Morocco, Sep. 2020, pp. 1–6.
+[24] Ö. Özyurt and H. Özyurt, ‘‘Learning style based individualized adap-
+tive e-learning environments: Content analysis of the articles published
+from 2005 to 2014,’’ Comput. Hum. Behav., vol. 52, pp. 349–358,
+Nov. 2015.
+[25] H. M. Truong, ‘‘Integrating learning styles and adaptive e-learning
+system:
+Current
+developments,
+problems
+and
+opportunities,’’
+Comput.
+Hum.
+Behav.,
+vol.
+55,
+pp. 1185–1193,
+Feb.
+2016,
+doi:
+10.1016/j.chb.2015.02.014.
+[26] J. Feldman, A. Monteserin, and A. Amandi, ‘‘Automatic detection of learn-
+ing styles: State of the art,’’ Artif. Intell. Rev., vol. 44, no. 2, pp. 157–186,
+Aug. 2015, doi: 10.1007/s10462-014-9422-6.
+[27] B. Kitchenham and S. Charters, ‘‘Guidelines for performing systematic lit-
+erature reviews in software engineering version 2.3,’’ Engineering, vol. 45,
+no. 4, p. 1051, 2007, doi: 10.1145/1134285.1134500.
+[28] S. A. Ochukut and R. Oboko, ‘‘A learner model for adaptive e-learning
+based on learning theories,’’ in Proc. IST-Africa Week Conf., Nairobi,
+Kenya, 2019, pp. 1–8, doi: 10.23919/ISTAFRICA.2019.8764826.
+[29] J. Melesko and E. Kurilovas, ‘‘Semantic technologies in e-learning: Learn-
+ing analytics and artificial neural networks in personalised learning sys-
+tems,’’ in Proc. 8th Int. Conf. Web Intell., Mining Semantics, Novi Sad,
+Serbia, Jun. 2018, pp. 1–7, doi: 10.1145/3227609.3227669.
+[30] H. Fasihuddin, G. Skinner, and R. Athauda, ‘‘A framework to personalise
+open learning environments by adapting to learning styles,’’ in Proc. 7th
+Int. Conf. Comput. Supported Educ., Lisbon, Portugal, 2015, pp. 296–305,
+doi: 10.5220/0005443502960305.
+[31] E. S. Amir, M. Sumadyo, D. I. Sensuse, Y. G. Sucahyo, and H. B. Santoso,
+‘‘Automatic detection of learning styles in learning management system
+by using literature-based method and support vector machine,’’ in Proc.
+Int. Conf. Adv. Comput. Sci. Inf. Syst. (ICACSIS), Malang, Indonesia,
+Oct. 2016, pp. 141–144.
+[32] E. Gomede, R. Miranda de Barros, and L. de Souza Mendes, ‘‘Use of deep
+multi-target prediction to identify learning styles,’’ Appl. Sci., vol. 10, no. 5,
+p. 1756, Mar. 2020, doi: 10.3390/app10051756.
+[33] C. Troussas, A. Krouska, and M. Virvou, ‘‘A multilayer inference
+engine for individualized tutoring model: Adapting learning material
+and its granularity,’’ Neural Comput. Appl., vol. 35, no. 1, pp. 61–75,
+Jan. 2023.
+[34] K. A. H. Assiry and A. Muniasamy, ‘‘Predicting learning styles using
+machine learning classifiers,’’ in Proc. Int. Conf. Electr., Comput. Energy
+Technol. (ICECET), Prague, Czechia, Jul. 2022, pp. 1–7.
+[35] A. F. Nurzaman, R. T. Tedja, L. Kusuma, Y. Kurniawan, G. Bhutkar,
+and J. Johan, ‘‘LAISES—Learning AI integrating system for elementary
+students,’’ in Proc. 5th Int. Conf. Graph. Signal Process., Nagoya, Japan,
+2021, pp. 65–71, doi: 10.1145/3474906.3474913.
+[36] C. Troussas, A. Krouska, C. Sgouropoulou, and I. Voyiatzis, ‘‘Ensem-
+ble learning using fuzzy weights to improve learning style identifica-
+tion for adapted instructional routines,’’ Entropy, vol. 22, no. 7, p. 735,
+Jul. 2020.
+[37] Y. Deng, D. Lu, C. Chung, D. Huang, and Z. Zeng, ‘‘Personalized learning
+in a virtual hands-on lab platform for computer science education,’’ in Proc.
+IEEE Frontiers Educ. Conf. (FIE), San Jose, CA, USA, Oct. 2018, pp. 1–8,
+doi: 10.1109/FIE.2018.8659291.
+[38] Y. H. Hung, R. I. Chang, and C. F. Lin, ‘‘Hybrid learning style
+identification and developing adaptive problem-solving learning activ-
+ities,’’ Comput. Hum. Behav., vol. 55, pp. 552–561, Feb. 2016, doi:
+10.1016/j.chb.2015.07.004.
+VOLUME 11, 2023
+48407
+S. G. Essa et al.: Personalized Adaptive Learning Technologies Based on ML Techniques to Identify LSs
+[39] N. El Ghouch, E. M. En-Naimi, A. Zouhair, and M. Al Achhab, ‘‘Our
+architecture of an adaptive learning system based on the dynamic case-
+based reasoning and the learner traces,’’ in Proc. 2nd Int. Conf. Comput.
+Wireless Commun. Syst., Larache, Morocco, Nov. 2017, pp. 1–5, doi:
+10.1145/3167486.3167497.
+[40] N. El Ghouch, E. M. En-Naimi, A. Zouhair, and M. Al Achhab, ‘‘Guided
+retrieve through the K-nearest neighbors method in adaptive learning
+system using the dynamic case based reasoning approach,’’ in Proc.
+ACM Int. Conf., Tetouan, Morocco, 2018, pp. 1–6, doi: 10.1145/3286606.
+3286852.
+[41] I. Karagiannis and M. Satratzemi, ‘‘An adaptive mechanism for moo-
+dle based on automatic detection of learning styles,’’ Educ. Inf. Tech-
+nol., vol. 23, no. 3, pp. 1331–1357, May 2018, doi: 10.1007/s10639-017-
+9663-5.
+[42] R. M. Felder and L. K. Silverman, ‘‘Learning and teaching styles in
+engineering education,’’ Eng. Educ., vol. 78, no. 7, pp. 674–681, 1988.
+[43] T. A. Litzinger, S. H. Lee, J. C. Wise, and R. M. Felder, ‘‘A psychometric
+study of the index of learning styles,’’ J. Eng. Educ., vol. 96, no. 4,
+pp. 309–319, Oct. 2007.
+[44] D. A. Kolb, Experiential Learning: Experience as the Source of Learning
+and Development, vol. 1. Englewood Cliffs, NJ, USA: Prentice-Hall, 1984.
+[45] A. Latham, K. Crockett, and D. Mclean, ‘‘Profiling student learning styles
+with multilayer perceptron neural networks,’’ in Proc. IEEE Int. Conf.
+Syst., Man, Cybern., Manchester, U.K., Oct. 2013, pp. 2510–2515, doi:
+10.1109/SMC.2013.428.
+[46] S. Sweta and K. Lal, ‘‘Personalized adaptive learner model in e-learning
+system using FCM and fuzzy inference system,’’ Int. J. Fuzzy Syst., vol. 19,
+no. 4, pp. 1249–1260, Aug. 2017, doi: 10.1007/s40815-017-0309-y.
+[47] S. Fatahi, H. Moradi, and E. Farmad, ‘‘Behavioral feature extraction to
+determine learning styles in e-learning environments,’’ in Proc. Int. Conf.
+E-Learning, Multi Conf. Comput. Sci. Inform. Syst., 2015, pp. 66–72.
+[48] A. A. Kalhoro, S. Rajper, and G. A. Mallah, ‘‘Detection of e-learners’
+learning styles: An automatic approach using decision tree,’’ Int. J. Com-
+put. Sci. Syst. Anal., vol. 14, no. 8, pp. 420–425, 2016.
+[49] M. Sogy, H. Kaur, A. Garg, M. Khunger, and R. Sehgal, ‘‘Assessing
+dynamic learners’ behaviour using open ended tasks,’’ in Proc. 4th Int.
+Conf. Inform. Syst. Comput. Netw., Mathura, India, 2019, pp. 234–239, doi:
+10.1109/ISCON47742.2019.9036258.
+[50] A. S. Kuttattu, G. S. Gokul, H. Prasad, J. Murali, and L. S. Nair,
+‘‘Analysing the learning style of an individual and suggesting field
+of study using machine learning techniques,’’ in Proc. 4th Int. Conf.
+Commun. Electron. Syst., Coimbatore, India, 2019, pp. 1671–1675, doi:
+10.1109/ICCES45898.2019.9002051.
+[51] H. Anantharaman, A. Mubarak, and B. T. Shobana, ‘‘Modelling an
+adaptive e-learning system using LSTM and random forest classifica-
+tion,’’ in Proc. IEEE Conf. e-Learning, e-Management e-Services (ICe),
+Langkawi, Malaysia, Nov. 2018, pp. 29–34, doi: 10.1109/IC3e.2018.
+8632646.
+[52] M. S. Hasibuan, L. E. Nugroho, and P. Santosa, ‘‘Detecting learning
+style based on level of knowledge,’’ in Proc. 3rd Int. Conf. Infor-
+mat. Comput. (ICIC), Palembang, Indonesia, Oct. 2018, pp. 1–5, doi:
+10.1109/IAC.2018.8780435.
+[53] B. Pardamean, T. Suparyanto, T. W. Cenggoro, D. Sudigyo, and A. Anu-
+grahana, ‘‘AI-based learning style prediction in online learning for pri-
+mary education,’’ IEEE Access, vol. 10, pp. 35725–35735, 2022, doi:
+10.1109/ACCESS.2022.3160177.
+[54] R. Stathacopoulou, G. D. Magoulas, M. Grigoriadou, and M. Samarakou,
+‘‘Neuro-fuzzy knowledge processing in intelligent learning environments
+for improved student diagnosis,’’ Inf. Sci., vol. 170, nos. 2–4, pp. 273–307,
+2005.
+[55] F. Rasheed and A. Wahid, ‘‘Learning style detection in E-learning systems
+using machine learning techniques,’’ Exp. Syst. Appl., vol. 174, Jul. 2021,
+Art. no. 114774.
+[56] A. L. Symeonidis and P. A. Mitkas, Agent Intelligence Through Artificial
+Intelligence. Cham, Switzerland: Springer, 2006.
+[57] A. K. Jain, J. Mao, and K. M. Mohiuddin, ‘‘Artificial neural networks: A
+tutorial,’’ Computer, vol. 29, pp. 31–44, Mar. 1996.
+[58] J. E. Villaverde, D. Godoy, and A. Amandi, ‘‘Learning styles’ recog-
+nition in e-learning environments with feed-forward neural networks,’’
+J. Comput. Assist. Learn., vol. 22, no. 3, pp. 197–206, May 2006, doi:
+10.1111/j.1365-2729.2006.00169.x.
+[59] A. Muniasamy and A. Alasiry, ‘‘Deep learning: The impact on future
+elearning,’’ Int. J. Emerg. Technol. Learn., vol. 15, no. 1, pp. 188–199,
+2020, doi: 10.3991/IJET.V15I01.11435.
+[60] S. Zhang, L. Yao, A. Sun, and Y. Tay, ‘‘Deep learning based recommender
+system: A survey and new perspectives,’’ ACM Comput. Surv., vol. 1,
+pp. 1–35, Jul. 2019, doi: 10.1145/3285029.
+[61] B.
+Maraza-Quispe,
+O.
+Alejandro-Oviedo,
+B.
+Cisneros-Chavez,
+M.
+Cuentas-Toledo,
+L.
+Cuadros-Paz,
+W.
+Fernandez-Gambarini,
+L. Quispe-Flores, and N. Caytuiro-Silva, ‘‘Model to personalize the
+teaching-learning process in virtual environments using case-based
+reasoning,’’ in Proc. ACM Int. Conf., Amsterdam, The Netherlands, 2019,
+pp. 105–110, doi: 10.1145/3369255.3369264.
+[62] M. S. Halawa, M. E. Shehab, and E. M. R. Hamed, ‘‘Predicting stu-
+dent personality based on a data-driven model from student behavior on
+LMS and social networks,’’ in Proc. 5th Int. Conf. Digit. Inf. Process.
+Commun. (ICDIPC), Sierre, Switzerland, Oct. 2015, pp. 294–299, doi:
+10.1109/ICDIPC.2015.7323044.
+[63] C.-F. Tsai, Y.-F. Hsu, C.-Y. Lin, and W.-Y. Lin, ‘‘Intrusion detection
+by machine learning: A review,’’ Exp. Syst. Appl., vol. 36, no. 10,
+pp. 11994–12000, 2009, doi: 10.1016/j.eswa.2009.05.029.
+[64] G. Seni and J. F. Elder, Ensemble Methods in Data Mining: Improving
+Accuracy Through Combining Predictions (Synthesis Lectures on Data
+Mining and Knowledge Discovery). San Rafael, CA, USA: Morgan and
+Claypool, 2010.
+[65] V. K. Sucheta, M. P. Radhika, and P. M. M. Manohara, ‘‘Prediction of
+learner’s profile based on learning styles in adaptive e-learning system,’’
+Int. J. Emerg. Technol. Learn., vol. 12, no. 6, pp. 31–51, 2917, doi:
+10.3991/ijet.v12i06.6579.
+[66] M. P. P. Liyanage, K. S. L. Gunawardena, and M. Hirakawa, ‘‘Detecting
+learning styles in learning management systems using data mining,’’ J.
+Inf. Process., vol. 24, no. 4, pp. 740–749, 2016, doi: 10.2197/ipsjjip.
+24.740.
+[67] R. R. Maaliw, ‘‘A personalized virtual learning environment using
+multiple modeling techniques,’’ in Proc. IEEE 12th Annu. Ubiquitous
+Comput., Electron. Mobile Commun. Conf. (UEMCON), New York,
+NY, USA, Dec. 2021, pp. 8–15, doi: 10.1109/UEMCON53757.2021.
+9666645.
+[68] S. V. Kolekar, R. M. Pai, and M. Pai M. M., ‘‘Adaptive user interface
+for moodle based e-learning system using learning styles,’’ Procedia
+Comput. Sci., vol. 135, pp. 606–615, 2018, doi: 10.1016/j.procs.2018.
+08.226.
+[69] M. Abdullah, W. H. Daffa, R. M. Bashmail, M. Alzahrani, and M. Sadik,
+‘‘The impact of learning styles on learner’s performance in e-learning
+environment,’’ Int. J. Adv. Comput. Sci. Appl., vol. 6, no. 9, pp. 24–31,
+2015, doi: 10.14569/ijacsa.2015.060903.
+[70] B. C. L. Christudas, E. Kirubakaran, and P. R. J. Thangaiah, ‘‘An evo-
+lutionary approach for personalization of content delivery in e-learning
+systems based on learner behavior forcing compatibility of learning mate-
+rials,’’ Telematics Informat., vol. 35, no. 3, pp. 520–533, Jun. 2018, doi:
+10.1016/j.tele.2017.02.004.
+[71] O. El Aissaoui, Y. El Madani El Alami, L. Oughdir, and Y. El Allioui,
+‘‘Integrating Web usage mining for an automatic learner profile detec-
+tion: A learning styles-based approach,’’ in Proc. Int. Conf. Intell.
+Syst. Comput. Vis. (ISCV), Fez, Morocco, Apr. 2018, pp. 1–6, doi:
+10.1109/ISACV.2018.8354021.
+[72] O. El Aissaoui, Y. El Alami El Madani, L. Oughdir, and Y. El Allioui,
+‘‘A fuzzy classification approach for learning style prediction based on web
+mining technique in e-learning environments,’’ Educ. Inf. Technol., vol. 24,
+pp. 1943–1959, Sep. 2019, doi: 10.1007/s10639-018-9820-5.
+[73] L. D. Ferreira, G. Spadon, A. C. Carvalho, and J. F. Rodrigues, ‘‘A compar-
+ative analysis of the automatic modeling of learning styles through machine
+learning techniques,’’ in Proc. IEEE Frontiers Edu. Conf. (FIE), San Jose,
+CA, USA, Oct. 2018, pp. 1–8, doi: 10.1109/FIE.2018.8659191.
+[74] A. Hidayat, K. Adi, and B. Surarso, ‘‘Determine Felder Silverman learning
+style model using literature based and K-means clustering,’’ in Proc. 6th
+Int. Conf. Informat. Comput., Jakarta, Indonesia, vol. 2021, pp. 1–6, doi:
+10.1109/ICIC54025.2021.9633010.
+[75] Y. Ikawati, M. U. H. Al Rasyid, and I. Winarno, ‘‘Student behavior analysis
+to detect learning styles in moodle learning management system,’’ in Proc.
+Int. Electron. Symp. (IES), Surabaya, Indonesia, Sep. 2020, pp. 501–506,
+doi: 10.1109/IES50839.2020.9231567.
+48408
+VOLUME 11, 2023
+S. G. Essa et al.: Personalized Adaptive Learning Technologies Based on ML Techniques to Identify LSs
+[76] E. Kurilovas, I. Zilinskiene, and V. Dagiene, ‘‘Recommending suitable
+learning paths according to learners’ preferences: Experimental research
+results,’’ Comput. Hum. Behav., vol. 51, pp. 945–951, Oct. 2015, doi:
+10.1016/j.chb.2014.10.027.
+[77] T. Sheeba and R. Krishnan, ‘‘Prediction of student learning style using
+modified decision tree algorithm in e-learning system,’’ in Proc. Int.
+Conf. Data Sci. Inf. Technol., Singapore, Jul. 2018, pp. 85–90, doi:
+10.1145/3239283.3239319.
+[78] L. X. Li and S. S. A. Rahman, ‘‘Students’ learning style detection using
+tree augmented naive Bayes,’’ Roy. Soc. Open Sci., vol. 5, no. 7, Jul. 2018,
+Art. no. 172108, doi: 10.1098/rsos.172108.
+[79] M. A. M. Rishard, S. L. Jayasekara, E. M. P. U. Ekanayake,
+K.
+M.
+J.
+S.
+Wickramathilake,
+S.
+Reyal,
+K.
+Manathunga,
+and
+J. Wickramarathne,
+‘‘Adaptivo:
+A
+personalized
+adaptive
+e-learning
+system based on learning styles and prior knowledge,’’ in Proc. 7th Int.
+Conf. Informat. Comput. (ICIC), Dec. 2022, pp. 1–9.
+SAADIA GUTTA ESSA received the Bachelor of
+Science degree from the University of the Wit-
+watersrand, Johannesburg, South Africa, and the
+master’s degree (Hons.) in computer science from
+the University of South Africa, Pretoria, in 2016.
+She is currently pursuing the Ph.D. degree with the
+School of Electrical and Information Engineering,
+University of the Witwatersrand, Johannesburg.
+She is also a Lecturer in computer science with the
+Tshwane University of Technology, Polokwane,
+South Africa.
+Her
+research
+interests
+include
+artificial
+intelligence,
+e-learning, and learning styles and education.
+TURGAY
+CELIK
+received the Ph.D. degree
+from the University of Warwick, Coventry, U.K.,
+in 2011.
+He is currently a Professor in digital transfor-
+mation and the Director of the Wits Institute of
+Data Science, University of the Witwatersrand,
+Johannesburg, South Africa. His research inter-
+ests include computer vision, (explainable) artifi-
+cial intelligence, (health) data science, data-driven
+optimal control, and remote sensing. He is an
+Associate Editor of BMC Medical Informatics and Decision Making, IET
+ELL, IEEE ACCESS, IEEE JOURNAL OF SELECTED TOPICS IN APPLIED EARTH
+OBSERVATIONS AND REMOTE SENSING (IEEE JSTARS), and SIVP (Springer).
+NADIA EMELIA HUMAN-HENDRICKS recei-
+ved
+the
+B.A.
+degree,
+the
+degree
+(Higher
+Certificate) in education, the degree (Hons.) in
+educational psychology, and the Master of Edu-
+cation degree in curriculum development and
+instructional design from the University of Preto-
+ria, in 1992, 1993, 1994, and 2000, respectively,
+and the Doctorate of Education degree in curricu-
+lum studies from the University of South Africa,
+in 2017.
+She was a Holder (International Postgraduate Diploma) in vocational
+teaching with the University of Haaga-Helia, Finland, in 2017. She is
+currently a Curriculum Development Practitioner with the Directorate of
+Curriculum Development and Support and the Faculty of ICT, Tshwane
+University of Technology, Pretoria, South Africa. Her research interests
+include learning styles, meta-learning and cooperative learning, authentic
+interactive learning, curriculum development and design, assessment and
+learning theories, trends and professional development, and empowerment
+of individuals.
+VOLUME 11, 2023
+48409
+
