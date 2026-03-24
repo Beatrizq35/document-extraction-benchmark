@@ -2,7 +2,7 @@
 
 Cria ambiente virtual
 ```bash
-python3 -m venv doc-parser-libs. 
+python3 -m venv doc-parser-libs
 ```
 
 Ativa ambiente virtual
