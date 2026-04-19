@@ -46,6 +46,8 @@ def run_evaluation(
     assert result is not None
     page_count = result.metadata.get("page_count")
     if page_count is not None:
+        if callable(page_count):
+            page_count = page_count()  # Executa o método para pegar o número
         page_count = int(page_count)
 
     criteria: dict[str, Any] = {
